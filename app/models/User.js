@@ -18,10 +18,6 @@ const userSchema = new mongoose.Schema({
     },
     gender: {
         type: String,
-        enum: {
-            values: ['male', 'female', 'other', 'unknown'],
-            massage:  '{VALUE} is not supported'
-        },
         require: true,
     },
     address: {
@@ -30,18 +26,11 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        // validate: {
-        //     validator: (value) => isEmail,
-        //     message: 'Email is incorrect format'
-        // },
+        unique: true,
         require: true,
     },
     phoneNumber: {
         type: String,
-        // validate: {
-        //     validator: (phoneNumber) => phoneNumber.length > 9,
-        //     massage: 'Phone number is incorrect format'
-        // },
         require: true,
     },
     password: {

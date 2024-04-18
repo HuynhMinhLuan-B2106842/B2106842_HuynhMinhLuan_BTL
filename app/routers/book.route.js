@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 // goi file controller
 const bookController = require("../controllers/book.controller");
+const Book = require('../models/Book');
 
 
 router.route("/")
@@ -15,8 +16,7 @@ router.route("/:id")
     .delete(bookController.deleteBook)
     .put(bookController.updateBook)
 
-router.route("/count")
-    .get(bookController.getBookCount)
+router.route("/count").get(bookController.getBookCount)
 
 
 module.exports = router;

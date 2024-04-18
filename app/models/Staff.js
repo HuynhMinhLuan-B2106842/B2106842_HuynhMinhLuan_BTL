@@ -13,18 +13,12 @@ const satffSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        validate: {
-            validator: (value) => isEmail,
-            message: 'Email is incorrect format'
-        },
+        
         require: true,
     },
     phoneNumber: {
         type: String,
-        validate: {
-            validator: (phoneNumber) => phoneNumber.length > 9,
-            massage: 'Phone number is incorrect format'
-        },
+       
         require: true,
     },
     password: {
