@@ -13,7 +13,7 @@ const authRouter = require('./app/routers/auth.route');
 const bookRouter = require('./app/routers/book.route');
 const userRouter = require('./app/routers/user.route');
 const orderRouter = require('./app/routers/order.route');
-const cartRouter = require("./app/routers/cart.route");
+const publisherRouter = require("./app/routers/publisher.route");
 
 app.get("/", (req, res) =>{
     res.json({message: "Welcome to my bookstore."});
@@ -23,7 +23,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/book", bookRouter);
 app.use("/api/user", userRouter);
 app.use("/api/order", orderRouter);
-app.use("api/cart", cartRouter);
+app.use("/api/publisher", publisherRouter);
 
 
 

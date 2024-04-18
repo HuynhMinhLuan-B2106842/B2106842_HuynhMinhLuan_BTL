@@ -1,10 +1,11 @@
 const app = require("./app");
 const config = require("./app/config");
+const mongoose = require('mongoose');
 
 async function startServer() {
     try {
-        // await MongoDB.connect(config.db.uri);
-        // console.log("Connected to the database!");
+        await mongoose.connect(config.db.uri);
+        console.log("Connected to the database!");
 
         const PORT = config.app.port;
         app.listen(PORT, () => {
