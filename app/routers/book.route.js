@@ -5,6 +5,9 @@ const bookController = require("../controllers/book.controller");
 const Book = require('../models/Book');
 
 
+router.route("/count").get(bookController.getBookCount)
+router.route("/search").get(bookController.getBookByName);
+
 router.route("/")
     .get(bookController.getAllBooks)
     .post(bookController.createBook)
@@ -16,7 +19,7 @@ router.route("/:id")
     .delete(bookController.deleteBook)
     .put(bookController.updateBook)
 
-router.route("/count").get(bookController.getBookCount)
 
 
-module.exports = router;
+
+module.exports = router;    

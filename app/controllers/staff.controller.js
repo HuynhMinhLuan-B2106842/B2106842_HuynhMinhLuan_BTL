@@ -1,8 +1,9 @@
 const Staff = require("../models/Staff");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const mongoose = require('mongoose')
 
-const registerStaff = async (req, res, next) => {
+exports.registerStaff = async (req, res, next) => {
     try {
       const { address, email,  phoneNumber, password , role } = req.body;
       // const data = req.body;
@@ -44,18 +45,11 @@ const registerStaff = async (req, res, next) => {
       res.json({ msg: "loi controler" });
     }
   };
-  const loginStaff = async (req, res, next) => {
+exports.loginStaff = async (req, res, next) => {
     try {
       const { email, password } = req.body;
-  
-      if (!email || !password) {
-        return res.json({
-          status: "bad",
-          msg: "Không được để trống tên nhân viên hoặc mật khẩu!",
-        });
-      }
-  
-      const existStaff = await Staff.findOne({ email: email });
+     
+      const existStaff = await Staff.findOne({ email });
       if (!existStaff) {
         return res.json({
           status: "bad",
@@ -72,12 +66,15 @@ const registerStaff = async (req, res, next) => {
       }
   
       const token = await jwt.sign({ userId: existStaff._id }, "tokensecret");
-      const decodedToken = await jwt.verify(token, "tokensecret");
-      console.log(decodedToken);
+      // const decodedToken = await jwt.verify(token, "tokensecret");
+      // console.log(decodedToken);
+  
   
       res.json({
         status: "ok",
         msg: "Bạn đã đăng nhập thành công!",
+        staff: existStaff,
+        id: existStaff._id,
         token,
       });
     } catch (error) {
@@ -88,6 +85,17 @@ const registerStaff = async (req, res, next) => {
       });
     }
   };
-  
+exports.getStaffInfoByID = async (req, res) => {
+    try{
+        const {id} = req.params;
+        const staff = await Staff.findById(id);
+        res.status(200).json(staff);
+    } catch (error) {
+        res.status(500).json({message: error.massage});
+    }
+};
+exports.changeStaffInfo = (req, res) => {
+  res.send({massage: "changeStaffInfo "});
+};  
 
-module.exports = { registerStaff , loginStaff};
+

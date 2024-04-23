@@ -93,6 +93,7 @@ const login = async (req, res, next) => {
       status: "ok",
       msg: "Bạn đã đăng nhập thành công!",
       user: existUser,
+      id: existUser._id,
       token,
     });
   } catch (error) {

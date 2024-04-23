@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 
-const satffSchema = new mongoose.Schema({
+const staffSchema = new mongoose.Schema({
     // id: { type: ObjectId},
     // Name: {
     //     type: String,
@@ -31,6 +31,6 @@ const satffSchema = new mongoose.Schema({
     }
 })
 
-const Staff = mongoose.model('Staff', satffSchema);
+const Staff = mongoose.model('Staff', staffSchema);
 
 module.exports = Staff

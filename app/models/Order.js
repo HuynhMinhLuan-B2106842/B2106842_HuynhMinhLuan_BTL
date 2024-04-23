@@ -1,22 +1,20 @@
 const mongoose = require('mongoose');
 
-
-
 const orderSchema = new mongoose.Schema({
     userId: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
     bookId: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Book',
         required: true
     },
     startDate: {
         type: Date,
-        require: true,
-        default: Date.now,
+        required: true,
+        default: Date.now
     },
     endDate: {
         type: Date,
@@ -32,6 +30,6 @@ const orderSchema = new mongoose.Schema({
     }
 });
 
-const Order = mongoose.model('Order', orderSchema)
+const Order = mongoose.model('Order', orderSchema);
 
-module.exports = Order
+module.exports = Order;

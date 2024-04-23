@@ -1,6 +1,19 @@
 const Book = require("../models/Book");
 const mongoose = require("mongoose");
 
+
+exports.getBookByName = async (req, res) => {
+    try {
+        const name = req.query.name;
+        const book = await Book.find({ name: { $regex: name, $options: 'i' } });
+        if (book.length === 0)
+            return res.status(404).json({ error: "khong tim thay san pham" });
+        return res.status(200).json(book);
+    } catch (error) {
+        return res.status(500).json({ message: error.massage });
+    }
+}
+
 exports.getAllBooks = async (req, res) => {
     try {
         const books = await Book.find({});
@@ -67,3 +80,6 @@ exports.getBookCount = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+
+
