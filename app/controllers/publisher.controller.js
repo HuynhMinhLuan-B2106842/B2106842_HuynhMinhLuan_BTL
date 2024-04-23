@@ -24,10 +24,12 @@ exports.getAllPublishers = async (req, res) => {
 // Create a new publisher
 exports.createPublisher = async (req, res) => {
     try {
+        console.log(req.body)
         const publisher = new Publisher(req.body);
         await publisher.save();
         res.json(publisher);
     } catch (err) {
+        console.log(req.body)
         res.status(500).json({ error: 'Server error' });
     }
 };

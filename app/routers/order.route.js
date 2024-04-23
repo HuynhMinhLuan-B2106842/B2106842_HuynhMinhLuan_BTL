@@ -8,11 +8,13 @@ router.route("/")
     .get(orderController.getAllOrder)
     .post(orderController.createOrder)
 
-router.route("/user")
+router.route("/user", )
     .get(orderController.getUserOrder)
 
 router.route("/cancel/:id")
     .patch(orderController.cancelOrder)
 
+router.route("/update")
+    .put(orderController.updateOrder)
 
 module.exports = router;

@@ -8,7 +8,11 @@ const publisherSchema = new mongoose.Schema({
     address: {
         type: String,
         required: true
-    }
+    },
+    image: {
+        type: String,
+        require: false,
+    },
 });
 
 const Publisher = mongoose.model('Publisher', publisherSchema);
